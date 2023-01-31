@@ -24,8 +24,10 @@ function checkEmail(input) {
     /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   if (re.test(input.value.trim())) {
     showSuccess(input);
+    return true;
   } else {
     showError(input, "Email is not valid");
+    return false;
   }
 }
 
@@ -36,13 +38,16 @@ function checkLength(input, min, max) {
       input,
       `${getFieldName(input)} must be at least ${min} characters`
     );
+    return false;
   } else if (input.value.length > max) {
     showError(
       input,
       `${getFieldName(input)} must be less than ${max} characters`
     );
+    return false;
   } else {
     showSuccess(input);
+    return true;
   }
 }
 
@@ -50,22 +55,10 @@ function checkLength(input, min, max) {
 function checkPasswordsMatch(input1, input2) {
   if (input1.value !== input2.value) {
     showError(input2, "Passwords do not match");
+    return false;
+  } else {
+    return true;
   }
-}
-
-// Check required fields
-function hasValue(inputArr) {
-  let isRequired = false;
-  inputArr.forEach(function (input) {
-    if (input.value.trim() === "") {
-      showError(input, `${getFieldName(input)} is required`);
-      isRequired = true;
-    } else {
-      showSuccess(input);
-    }
-  });
-
-  return isRequired;
 }
 
 // Get fieldname
@@ -73,22 +66,58 @@ function getFieldName(input) {
   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
 
+// Check required fields
+function hasValue(input) {
+  let isRequired = true;
+
+  if (input.value.trim() === "") {
+    showError(input, `${getFieldName(input)} is required`);
+    isRequired = false;
+  } else {
+    showSuccess(input);
+  }
+
+  return isRequired;
+}
+
+function clearValue(inputArray) {
+  inputArray.forEach((input) => {
+    input.value = "";
+    input.parentElement.className = "form-control";
+  });
+}
+
 form.addEventListener("submit", function (e) {
   e.preventDefault();
 
-  if (!hasValue([username])) {
-    checkLength(username, 3, 15);
+  let submit = true;
+
+  const hasUsername = hasValue(username);
+  submit &= hasUsername;
+  if (hasUsername) {
+    submit &= checkLength(username, 3, 15);
   }
 
-  if (!hasValue([email])) {
-    checkEmail(email);
+  const hasEmail = hasValue(email);
+  submit &= hasEmail;
+  if (hasEmail) {
+    submit &= checkEmail(email);
   }
 
-  if (!hasValue([password])) {
-    checkLength(password, 6, 25);
+  const hasPassword = hasValue(password);
+  submit &= hasPassword;
+  if (hasPassword) {
+    submit &= checkLength(password, 6, 25);
   }
 
-  if (!hasValue([password2])) {
-    checkPasswordsMatch(password, password2);
+  const hasPassword2 = hasValue(password2);
+  submit &= hasPassword2;
+  if (hasPassword2) {
+    submit &= checkPasswordsMatch(password, password2);
+  }
+
+  if (submit) {
+    clearValue([username, email, password, password2]);
+    alert("Congratulations on successful registration");
   }
 });
