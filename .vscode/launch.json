@@ -1,0 +1,10 @@
+{
+    "configurations":[
+        {
+            "name": "launch root",
+            "request": "launch",
+            "type": "chrome",
+            "file": "${workspaceFolder}"
+        }
+    ]
+}
