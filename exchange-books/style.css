@@ -1,0 +1,33 @@
+.css-135fsj8 {
+  box-sizing: border-box;
+  margin: 0px;
+  min-width: 0px;
+  width: 320px;
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  height: 100%;
+}
+
+.orderbook-header {
+  display: flex;
+}
+
+.css-135fsj8 .orderbook-tbheader {
+  margin-left: 16px;
+  margin-right: 16px;
+  margin-top: 0px;
+}
+
+.css-135fsj8 .orderbook-tbheader .content {
+  display: flex;
+  height: 20px;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: rgb(112, 122, 138);
+}
+
+.css-135fsj8 .orderbook-tbheader .item {
+  display: flex;
+}
