@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <title>Flex box playground</title>
+  </head>
+  <body>
+    <h1>Flex box playground</h1>
+    <div class="box">
+      <div id="options">
+        <div class="option-item">
+          <h2 title="main axis">flex-firection</h2>
+          <input
+            type="radio"
+            name="flex-direction"
+            id="fd1"
+            checked="checked"
+          />
+          <label title="start point in left">row</label>
+          <input type="radio" name="flex-direction" id="fd2" />
+          <label title="start point in right" for="fd2">row-reverse</label>
+          <input type="radio" name="flex-direction" id="fd3" />
+          <label title="start point in right" for="fd3">row-reverse</label>
+          <input type="radio" name="flex-direction" id="fd4" />
+          <label title="start point in right" for="fd4">row-reverse</label>
+        </div>
+        <div class="option-item">
+          <h2 title="whether to warp">flex-wrap</h2>
+          <input type="radio" name="flex-wrap" id="fw1" checked="checked" />
+          <label title="nowarp" for="fw1">nowrap</label>
+          <input type="radio" name="flex-wrap" id="fw2" />
+          <label title="first row in first line" for="fw2">wrap</label>
+          <input type="radio" name="flex-wrap" id="fw3" />
+          <label title="first row in last line" for="fw3">wrap-reverse</label>
+        </div>
+        <div class="option-item">
+          <h2 title="main axis alignment option">justify-content</h2>
+          <input
+            type="radio"
+            name="justify-content"
+            id="jc1"
+            checked="checked"
+          />
+          <label title="left alignment" for="jc1">flex-start</label>
+          <input type="radio" name="justify-content" id="jc2" />
+          <label title="right alignment" for="jc2">flex-end</label>
+          <input type="radio" name="justify-content" id="jc3" />
+          <label title="center alignment" for="jc3">center</label>
+          <input type="radio" name="justify-content" id="jc4" />
+          <label
+            title="both ends are justified, and the items are all equally spaced between them"
+            for="jc4"
+            >space-between</label
+          >
+          <input type="radio" name="justify-content" id="jc5" />
+          <label title="" for="jc5">space-around</label>
+        </div>
+        <div class="option-item">
+          <h2 title="">align-items</h2>
+          <input type="radio" name="align-items" id="ai1" />
+          <label title="" for="ai1">flex-start</label>
+          <input type="radio" name="align-items" id="ai2" />
+          <label title="" for="ai2">flex-end</label>
+          <input type="radio" name="align-items" id="ai3" />
+          <label title="" for="ai3">center</label>
+          <input type="radio" name="align-items" id="ai4" />
+          <label title="" for="ai4">baseline</label>
+          <input type="radio" name="align-items" id="ai5" checked="checked" />
+          <label title="" for="ai5">stretch</label>
+        </div>
+        <div class="option-item">
+          <h2 title="">align-content</h2>
+          <input type="radio" name="align-content" id="ac1" />
+          <label title="" for="ac1">flex-start</label>
+          <input type="radio" name="align-content" id="ac2" />
+          <label title="" for="ac2">flex-end</label>
+          <input type="radio" name="align-content" id="ac3" />
+          <label title="" for="ac3">center</label>
+          <input type="radio" name="align-content" id="ac4" />
+          <label title="" for="ac4">space-between</label>
+          <input type="radio" name="align-content" id="ac5" />
+          <label title="" for="ac5">space-around</label>
+          <input type="radio" name="align-content" id="ac6" checked="checked" />
+          <label title="" for="ac6">stretch</label>
+        </div>
+      </div>
+      <div id="items">
+        <div id="item-head">
+          <div>
+            <span>项目数量：<span id="count">4</span></span>
+            <button onclick="addItem()">+</button>
+            <button onclick="subItem()">-</button>
+          </div>
+          <div>
+            <span style="display: inline-block; width: 150px">
+              项目宽度：<span id="itemWidth">85</span>px
+            </span>
+            <input
+              id="widthRange"
+              type="range"
+              name="points"
+              min="50"
+              max="250"
+              value="85"
+            />
+          </div>
+        </div>
+        <div id="item-body"></div>
+      </div>
+    </div>
+  </body>
+</html>

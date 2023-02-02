@@ -1,0 +1,53 @@
+body {
+  width: 100%;
+  min-width: 320px;
+  color: #2c3e50;
+  background: #ecf0f1;
+}
+
+.box {
+  margin: 10px;
+  border: #aaa solid 1px;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  background: #fdfdfd;
+}
+
+#options {
+  display: flex;
+  justify-content: space-around;
+}
+
+.option-item {
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
+}
+
+.option-item input {
+  display: none;
+}
+
+input[type="radio"]:checked + label {
+  background: #33cccc;
+  color: #fff;
+}
+
+.option-item label {
+  user-select: none;
+  margin: 5px 0;
+  padding: 5px;
+  border: solid 1px;
+  border-radius: 5px;
+  color: #33cccc;
+}
+
+#item-body {
+  display: flex;
+  padding: 5px;
+  background: #33cccc;
+  border-radius: 5px;
+  min-height: 400px;
+}
